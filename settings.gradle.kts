@@ -1,2 +1,2 @@
 rootProject.name = "ko_vulkan"
-include("bin", "vm")
+include("bin", "vm", "algebra")

@@ -2,6 +2,7 @@
 .gradle/*
 vm/build/*
 bin/build/*
+algebra/build/*
 gradle/*
 gradlew
 gradlew.bat
