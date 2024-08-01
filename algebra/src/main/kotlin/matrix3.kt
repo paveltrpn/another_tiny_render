@@ -1,31 +1,59 @@
-
 package algebra
 
-class Matrix3d: Matrixd(9) {
+class Matrix3d() : Matrixd(9) {
     init {
         setIdtt()
     }
 
+    constructor(rhs: DoubleArray) : this() {
+        // may be type check here?
+        rhs.copyInto(data)
+    }
+
+    constructor(rhs: Matrix3d) : this() {
+        rhs.data.copyInto(data)
+    }
+
+    // operator
+    operator fun get(index: Int): Double {
+        return data[index]
+    }
+
+    // operator
+    operator fun set(index: Int, value: Double) {
+        data[index] = value
+    }
+
     fun fromArray(rhs: DoubleArray) {
-        _data = rhs
+        data = rhs
     }
 
     fun copy(): Matrix3d {
-        val rt = Matrix3d()
-        rt.fromArray(this._data)
-        return rt
+        return Matrix3d(this.data)
     }
 
     fun setIdtt() {
-        _data[0] = 1.0
-        _data[1] = 0.0
-        _data[2] = 0.0
-        _data[3] = 0.0
-        _data[4] = 1.0
-        _data[5] = 0.0
-        _data[6] = 0.0
-        _data[7] = 0.0
-        _data[8] = 1.0
+        data[0] = 1.0
+        data[1] = 0.0
+        data[2] = 0.0
+        data[3] = 0.0
+        data[4] = 1.0
+        data[5] = 0.0
+        data[6] = 0.0
+        data[7] = 0.0
+        data[8] = 1.0
+    }
+
+    fun multSelf(rhs: Matrix3d) {
+
+    }
+
+    fun trasposeSelf() {
+
+    }
+
+    fun transposeGet(): Matrix3d {
+        return Matrix3d()
     }
 }
 

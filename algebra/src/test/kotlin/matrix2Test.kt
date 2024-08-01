@@ -1,4 +1,3 @@
- 
 package algebra
 
 import kotlin.test.Test
@@ -7,7 +6,53 @@ import kotlin.test.assertNotEquals
 
 class Matrix2Test {
     @Test
-    fun proofOfWork() {
-        println("test is work")
+    fun checkSizeTest() {
+        val MATRIX3X3_SIZE = 9
+
+        val foo = Matrix3d()
+        assertEquals(MATRIX3X3_SIZE, foo.size)
+
+        val bar: Matrix3d
+        bar = Matrix3d(doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0))
+        assertEquals(MATRIX3X3_SIZE, bar.size)
+
+        val baz: Matrix3d
+        baz = Matrix3d(bar)
+        assertEquals(MATRIX3X3_SIZE, baz.size)
+    }
+
+    @Test
+    fun idttTest() {
+        val foo = Matrix3d()
+
+        assertEquals(1.0, foo[0])
+        assertEquals(0.0, foo[1])
+        assertEquals(0.0, foo[2])
+        assertEquals(0.0, foo[3])
+        assertEquals(1.0, foo[4])
+        assertEquals(0.0, foo[5])
+        assertEquals(0.0, foo[6])
+        assertEquals(0.0, foo[7])
+        assertEquals(1.0, foo[8])
+    }
+
+    @Test
+    fun copyTest() {
+        val ethalon = Matrix3d(doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0))
+        val foo = Matrix3d(ethalon)
+
+        assertEquals(0.0, foo[0])
+        assertEquals(1.0, foo[1])
+        assertEquals(2.0, foo[2])
+        assertEquals(3.0, foo[3])
+        assertEquals(4.0, foo[4])
+        assertEquals(5.0, foo[5])
+        assertEquals(6.0, foo[6])
+        assertEquals(7.0, foo[7])
+        assertEquals(8.0, foo[8])
+
+        foo[1] = 11.0
+        assertEquals(11.0, foo[1])
+        assertNotEquals(11.0, ethalon[1])
     }
 }
