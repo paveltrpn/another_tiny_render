@@ -8,18 +8,18 @@ import kotlin.test.assertNotEquals
 class Matrix3Test {
     @Test
     fun checkSize() {
-        val MATRIX3X3_SIZE = 9
+        val MATRIX_SIZE = 9
 
         val foo = Matrix3d()
-        assertEquals(MATRIX3X3_SIZE, foo.size)
+        assertEquals(MATRIX_SIZE, foo.size)
 
         val bar: Matrix3d
         bar = Matrix3d(doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0))
-        assertEquals(MATRIX3X3_SIZE, bar.size)
+        assertEquals(MATRIX_SIZE, bar.size)
 
         val baz: Matrix3d
         baz = Matrix3d(bar)
-        assertEquals(MATRIX3X3_SIZE, baz.size)
+        assertEquals(MATRIX_SIZE, baz.size)
 
         assertFailsWith<IllegalArgumentException>(
             message = "No exception found",

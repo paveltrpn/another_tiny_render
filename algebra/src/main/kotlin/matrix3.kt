@@ -27,6 +27,13 @@ class Matrix3d() : Matrixd(9) {
         data[index] = value
     }
 
+    // operator
+    operator fun times(rhs: Matrix3d): Matrix3d {
+        val tmp = Matrix3d(this)
+        tmp.multSelf(rhs)
+        return tmp
+    }
+
     fun fromArray(rhs: DoubleArray) {
         rhs.copyInto(data)
     }
@@ -49,6 +56,10 @@ class Matrix3d() : Matrixd(9) {
 
     fun multSelf(rhs: Matrix3d) {
 
+    }
+
+    fun det(): Double {
+        return 0.0
     }
 
     fun trasposeSelf() {
