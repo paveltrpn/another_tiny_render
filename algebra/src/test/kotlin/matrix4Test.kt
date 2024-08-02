@@ -2,7 +2,7 @@ package algebra
 
 import kotlin.test.Test
 
-class Matrix2Test {
+class Matrix4Test {
     @Test
     fun checkSize() {
     }

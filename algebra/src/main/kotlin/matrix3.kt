@@ -7,6 +7,9 @@ class Matrix3d() : Matrixd(9) {
 
     constructor(rhs: DoubleArray) : this() {
         // may be type check here?
+        if (rhs.size != 9) {
+            throw IllegalArgumentException()
+        }
         rhs.copyInto(data)
     }
 
@@ -25,7 +28,7 @@ class Matrix3d() : Matrixd(9) {
     }
 
     fun fromArray(rhs: DoubleArray) {
-        data = rhs
+        rhs.copyInto(data)
     }
 
     fun copy(): Matrix3d {
