@@ -1,4 +1,3 @@
-
 package algebra
 
 open class Matrixl(val size: Int) {
