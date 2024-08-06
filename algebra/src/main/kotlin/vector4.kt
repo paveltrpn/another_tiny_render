@@ -1,3 +1,5 @@
+package algebra
+
 import algebra.Vectord
 import kotlin.math.sqrt
 

@@ -17,6 +17,12 @@ class Vector3d() : Vectord(3) {
         rhs.data.copyInto(data)
     }
 
+    constructor(x: Double, y: Double, z: Double) : this() {
+        data[0] = x
+        data[1] = y
+        data[2] = z
+    }
+
     // operator
     operator fun get(index: Int): Double {
         return data[index]
