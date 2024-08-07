@@ -45,7 +45,43 @@ class Vector3d() : Vectord(3) {
         return data[2]
     }
 
+    fun plus(rhs: Vector3d) {
+        this[0] += rhs[0]
+        this[1] += rhs[1]
+        this[2] += rhs[2]
+    }
+
+    fun minus(rhs: Vector3d) {
+        this[0] -= rhs[0]
+        this[1] -= rhs[1]
+        this[2] -= rhs[2]
+    }
+
+    fun sum(rhs: Vector3d): Vector3d {
+        val tmp = Vector3d(this)
+        tmp.plus(rhs)
+        return tmp
+    }
+
+    fun sub(rhs: Vector3d): Vector3d {
+        val tmp = Vector3d(this)
+        tmp.minus(rhs)
+        return tmp
+    }
+
     fun dot(rhs: Vector3d): Double {
-        return sqrt(this[0] * rhs[0] + this[1] * rhs[1] + this[2] * rhs[2])
+        return this[0] * rhs[0] + this[1] * rhs[1] + this[2] * rhs[2]
+    }
+
+    fun length(): Double {
+        return sqrt(dot(this))
+    }
+
+    fun cross(rhs: Vector3d): Vector3d {
+        return Vector3d(
+            this[1] * rhs[2] - this[2] * rhs[1],
+            this[2] * rhs[0] - this[0] * rhs[2],
+            this[0] * rhs[1] - this[1] * rhs[0]
+        )
     }
 }
