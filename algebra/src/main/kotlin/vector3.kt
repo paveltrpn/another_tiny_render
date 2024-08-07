@@ -77,6 +77,16 @@ class Vector3d() : Vectord(3) {
         return sqrt(dot(this))
     }
 
+    fun normalize() {
+        val len = length()
+
+        if (len > 0.0) {
+            this[0] /= len
+            this[1] /= len
+            this[2] /= len
+        }
+    }
+
     fun cross(rhs: Vector3d): Vector3d {
         return Vector3d(
             this[1] * rhs[2] - this[2] * rhs[1],

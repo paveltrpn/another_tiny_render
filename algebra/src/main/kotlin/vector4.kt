@@ -85,4 +85,14 @@ class Vector4d() : Vectord(4) {
     fun length(): Double {
         return sqrt(dot(this))
     }
+
+    fun normalize() {
+        val len = length()
+
+        if (len > 0.0) {
+            this[0] /= len
+            this[1] /= len
+            this[2] /= len
+        }
+    }
 }

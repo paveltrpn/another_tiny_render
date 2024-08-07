@@ -1,4 +1,5 @@
-import algebra.Vectord
+package algebra
+
 import kotlin.math.sqrt
 
 class Vector2d() : Vectord(2) {
