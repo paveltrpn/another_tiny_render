@@ -44,7 +44,7 @@ class Quaternion() {
         data[2] = z
         data[2] = w
     }
-    
+
     operator fun get(index: Int): Double {
         return data[index]
     }

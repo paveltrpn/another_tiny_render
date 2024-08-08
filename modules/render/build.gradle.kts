@@ -1,10 +1,6 @@
 plugins {
-    application
     kotlin("jvm") version "2.0.0"
 }
-
-val lwjglVersion = "3.3.1"
-val lwjglNatives = "natives-linux"
 
 repositories {
     mavenCentral()
@@ -16,8 +12,16 @@ repositories {
     // }
 }
 
+val lwjglVersion = "3.3.1"
+val lwjglNatives = "natives-linux"
+
 dependencies {
-    // implementation("org.lwjgl:lwjgl:3.3.1")
+    // testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    // testImplementation(libs.junit.jupiter.engine)
+    // testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // api(libs.commons.math3)
+    // implementation(libs.guava)
+
     implementation("org.lwjgl", "lwjgl", lwjglVersion)
     implementation("org.lwjgl", "lwjgl-glfw", lwjglVersion)
     implementation("org.lwjgl", "lwjgl-jemalloc", lwjglVersion)
@@ -27,9 +31,19 @@ dependencies {
     runtimeOnly("org.lwjgl", "lwjgl-glfw", classifier = lwjglNatives)
     runtimeOnly("org.lwjgl", "lwjgl-jemalloc", classifier = lwjglNatives)
     runtimeOnly("org.lwjgl", "lwjgl-opengl", classifier = lwjglNatives)
+
+    testImplementation(kotlin("test"))
 }
 
-application {
-    mainClass = "kov.vm.VmKt"
+tasks {
+    test {
+        useJUnitPlatform()
+
+        testLogging.showStandardStreams = true
+
+        testLogging {
+            events("PASSED", "SKIPPED", "FAILED", "STANDARD_OUT", "STANDARD_ERROR")
+        }
+    }
 }
 

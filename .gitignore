@@ -1,9 +1,11 @@
 .idea/*
 .kotlin/*
 .gradle/*
-vm/build/*
 bin/build/*
-algebra/build/*
+modules/algebra/build/*
+modules/render/build/*
+modules/config/build/*
+usage/simple/build/*
 gradle/*
 gradlew
 gradlew.bat
