@@ -1,4 +1,4 @@
-rootProject.name = "ko_vulkan"
+rootProject.name = "another_tiny_render"
 include(":modules:algebra")
 include(":modules:config")
 include(":modules:render")
