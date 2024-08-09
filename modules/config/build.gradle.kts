@@ -1,4 +1,3 @@
-
 plugins {
     kotlin("jvm") version "2.0.0"
 }
@@ -10,6 +9,7 @@ dependencies {
     // api(libs.commons.math3)
     // implementation(libs.guava)
 
+    implementation("com.google.code.gson:gson:2.11.0")
     testImplementation(kotlin("test"))
 }
 

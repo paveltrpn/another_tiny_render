@@ -1,8 +1,9 @@
 package modules.render
 
+import modules.config.*
 import org.lwjgl.glfw.GLFW.*
 
-class Render {
+open class Render(val config: Config) {
     init {
         println("init render")
 

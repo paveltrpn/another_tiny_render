@@ -21,6 +21,8 @@ dependencies {
     // testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // api(libs.commons.math3)
     // implementation(libs.guava)
+    
+    implementation(project(":modules:config"))
 
     implementation("org.lwjgl", "lwjgl", lwjglVersion)
     implementation("org.lwjgl", "lwjgl-glfw", lwjglVersion)
