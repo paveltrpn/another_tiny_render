@@ -1,7 +1,10 @@
 package usage.simple
 
-import modules.render.*
+import tire.config.*
+import tire.render.*
 
 fun main(args: Array<String>) {
-    val render = Render()
+    val config = Config("")
+
+    val render = Render(config)
 }

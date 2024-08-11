@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tire.algebra.Matrix2Test" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-08-11T09:39:04" hostname="pavel" time="0.05">
+  <properties/>
+  <testcase name="copy()" classname="tire.algebra.Matrix2Test" time="0.03"/>
+  <testcase name="idtt()" classname="tire.algebra.Matrix2Test" time="0.0"/>
+  <testcase name="determinant()" classname="tire.algebra.Matrix2Test" time="0.001"/>
+  <testcase name="checkSize()" classname="tire.algebra.Matrix2Test" time="0.015"/>
+  <testcase name="multiply()" classname="tire.algebra.Matrix2Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -18,7 +18,8 @@ repositories {
 
 dependencies {
     // implementation("org.lwjgl:lwjgl:3.3.1")
-    implementation(project(":modules:render"))
+    implementation(project(":tire:config"))
+    implementation(project(":tire:render"))
 }
 
 application {
