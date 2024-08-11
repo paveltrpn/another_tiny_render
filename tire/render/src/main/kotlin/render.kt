@@ -1,24 +1,29 @@
 package tire.render
 
-import tire.config.*
 import org.lwjgl.glfw.GLFW.*
+import org.lwjgl.glfw.GLFWKeyCallback
+import tire.config.Config
+
 
 //import io.github.oshai.kotlinlogging.KotlinLogging
 
 //private val logger = KotlinLogging.logger {}
 
-abstract class Render(val config: Config) {
-    var window: Long = 0
+abstract class Render(private val config: Config) {
+    protected var window: Long = 0
 
     init {
         println("init render")
         initGLFW()
         openWindow()
+        registerKeyCallback()
     }
 
     abstract fun beforeFrame()
     abstract fun frame()
     abstract fun afterFrame()
+
+    private var keyCallback: GLFWKeyCallback? = null
 
     fun run() {
         while (!glfwWindowShouldClose(window)) {
@@ -30,6 +35,7 @@ abstract class Render(val config: Config) {
         }
     }
 
+    // Initialize GLFW
     private fun initGLFW() {
         // Set up an error callback
         // GLFWErrorCallback.createPrint(System.err).set()
@@ -50,10 +56,9 @@ abstract class Render(val config: Config) {
         } else {
             glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE)
         }
-
-
     }
 
+    // Create and show window
     private fun openWindow() {
         window =
             glfwCreateWindow(
@@ -68,5 +73,24 @@ abstract class Render(val config: Config) {
         } else {
             println("glfw create window success")
         }
+    }
+
+    private fun registerKeyCallback() {
+        // Setup a key callback. It will be called every time a key is pressed, repeated or released.
+        keyCallback = glfwSetKeyCallback(window, object : GLFWKeyCallback() {
+            override fun invoke(
+                window: Long,
+                key: Int,
+                scancode: Int,
+                action: Int,
+                mods: Int,
+            ) {
+
+                if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+                    glfwSetWindowShouldClose(window, true)
+                }
+
+            }
+        })
     }
 }
