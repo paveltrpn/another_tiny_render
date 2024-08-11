@@ -2,9 +2,9 @@
 .kotlin/*
 .gradle/*
 bin/build/*
-modules/algebra/build/*
-modules/render/build/*
-modules/config/build/*
+tire/algebra/build/*
+tire/render/build/*
+tire/config/build/*
 usage/simple/build/*
 gradle/*
 gradlew

@@ -20,6 +20,7 @@ dependencies {
     // implementation("org.lwjgl:lwjgl:3.3.1")
     implementation(project(":tire:config"))
     implementation(project(":tire:render"))
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
 }
 
 application {

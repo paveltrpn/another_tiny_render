@@ -35,6 +35,7 @@ dependencies {
     runtimeOnly("org.lwjgl", "lwjgl-opengl", classifier = lwjglNatives)
 
     testImplementation(kotlin("test"))
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
 }
 
 tasks {
