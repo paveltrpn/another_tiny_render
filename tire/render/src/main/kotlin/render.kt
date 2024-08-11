@@ -2,6 +2,8 @@ package tire.render
 
 import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.glfw.GLFWKeyCallback
+import org.lwjgl.glfw.GLFWErrorCallback
+import org.lwjgl.system.MemoryUtil.NULL
 import tire.config.Config
 
 
@@ -9,21 +11,23 @@ import tire.config.Config
 
 //private val logger = KotlinLogging.logger {}
 
-abstract class Render(private val config: Config) {
+abstract class Render(protected val config: Config) {
     protected var window: Long = 0
+    private var keyCallback: GLFWKeyCallback? = null
+    private var errorCallback: GLFWErrorCallback? = null
 
-    init {
-        println("init render")
-        initGLFW()
-        openWindow()
-        registerKeyCallback()
-    }
-
+    abstract fun initAPI()
     abstract fun beforeFrame()
     abstract fun frame()
     abstract fun afterFrame()
 
-    private var keyCallback: GLFWKeyCallback? = null
+    init {
+        println("init render...")
+        initGLFW()
+        openWindow()
+        registerKeyCallback()
+        initAPI()
+    }
 
     fun run() {
         while (!glfwWindowShouldClose(window)) {
@@ -38,14 +42,19 @@ abstract class Render(private val config: Config) {
     // Initialize GLFW
     private fun initGLFW() {
         // Set up an error callback
-        // GLFWErrorCallback.createPrint(System.err).set()
+        errorCallback = glfwSetErrorCallback(GLFWErrorCallback.createPrint(System.err))
+
         if (!(glfwInit())) {
             throw IllegalStateException("Unable to initialize window")
         } else {
             println("glfw initialized")
         }
+    }
 
-        // glfwSetErrorCallback(glfw_error_callback);
+    // Create and show window
+    private fun openWindow() {
+        glfwDefaultWindowHints()
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE)
 
         if (config.doublebuffer()) {
             glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE)
@@ -56,23 +65,24 @@ abstract class Render(private val config: Config) {
         } else {
             glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE)
         }
-    }
 
-    // Create and show window
-    private fun openWindow() {
         window =
             glfwCreateWindow(
                 config.windowWidth().toInt(),
                 config.windowHeight().toInt(),
                 config.applicationName(),
-                0,
-                0
+                NULL,
+                NULL
             )
-        if (window == 0L) {
+        if (window == NULL) {
             throw RuntimeException("unable to create window")
         } else {
             println("glfw create window success")
         }
+
+        glfwSetWindowPos(window, config.windowPosX().toInt(), config.windowPosY().toInt())
+
+        glfwShowWindow(window)
     }
 
     private fun registerKeyCallback() {
