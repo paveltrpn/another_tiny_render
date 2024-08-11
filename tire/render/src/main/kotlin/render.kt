@@ -6,7 +6,6 @@ import org.lwjgl.glfw.GLFWErrorCallback
 import org.lwjgl.system.MemoryUtil.NULL
 import tire.config.Config
 
-
 //import io.github.oshai.kotlinlogging.KotlinLogging
 
 //private val logger = KotlinLogging.logger {}
@@ -26,7 +25,6 @@ abstract class Render(protected val config: Config) {
         initGLFW()
         openWindow()
         registerKeyCallback()
-        initAPI()
     }
 
     fun run() {
@@ -86,7 +84,7 @@ abstract class Render(protected val config: Config) {
     }
 
     private fun registerKeyCallback() {
-        // Setup a key callback. It will be called every time a key is pressed, repeated or released.
+        // Set up a key callback. It will be called every time a key is pressed, repeated or released.
         keyCallback = glfwSetKeyCallback(window, object : GLFWKeyCallback() {
             override fun invoke(
                 window: Long,

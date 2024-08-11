@@ -8,6 +8,7 @@ import tire.config.*
 class RenderGL(config: Config) : Render(config) {
     init {
         println("init openGL render...")
+        initAPI()
     }
 
     override fun initAPI() {
@@ -17,7 +18,7 @@ class RenderGL(config: Config) : Render(config) {
         if (config.vsync()) {
             glfwSwapInterval(1)
         }
-        
+
         // This line is critical for LWJGL's interoperation with GLFW's
         // OpenGL context, or any context that is managed externally.
         // LWJGL detects the context that is current in the current thread,
@@ -25,7 +26,7 @@ class RenderGL(config: Config) : Render(config) {
         // bindings available for use.
         GL.createCapabilities()
 
-        glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(1.0f, 0.0f, 0.0f, 0.0f)
     }
 
     override fun beforeFrame() {

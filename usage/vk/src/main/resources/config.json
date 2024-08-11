@@ -1,0 +1,16 @@
+{
+  "applicationName": "test vk app",
+  "fullscreen": false,
+  "resizeable": false,
+  "windowWidth": 800,
+  "windowHeight": 600,
+  "windowPosX": 300,
+  "windowPosY": 300,
+  "doublebuffer": true,
+  "vsync": true,
+  "debug": true,
+  "engineName": "testEngine",
+  "enableValidationLayers": false,
+  "perspectiveCameraFov": 50.0
+}
+

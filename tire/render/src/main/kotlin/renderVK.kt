@@ -6,6 +6,7 @@ import tire.config.*
 class RenderVK(config: Config) : Render(config) {
     init {
         println("init vulkan render...")
+        initAPI()
     }
 
     override fun initAPI() {

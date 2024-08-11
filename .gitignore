@@ -5,7 +5,8 @@ bin/build/*
 tire/algebra/build/*
 tire/render/build/*
 tire/config/build/*
-usage/simple/build/*
+usage/gl/build/*
+usage/vk/build/*
 gradle/*
 gradlew
 gradlew.bat

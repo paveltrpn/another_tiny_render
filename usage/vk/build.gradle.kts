@@ -24,6 +24,6 @@ dependencies {
 }
 
 application {
-    mainClass = "usage.simple.SimpleKt"
+    mainClass = "usage.vk.VkKt"
 }
 
